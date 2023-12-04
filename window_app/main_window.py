@@ -97,6 +97,7 @@ class MyLabel(QLabel, QPushButton):
 
 
 class MyCheckBox(QCheckBox):
+
     def __init__(self, parent=None):
         super(MyCheckBox, self).__init__(parent)
 
@@ -2251,6 +2252,7 @@ class MainWindow(QMainWindow):
         self.instruction_scroll_area.setWidget(self.instructionWidget)
         self.gridLayout30.addWidget(self.instruction_scroll_area, 0, 0, 1, 1)
         self.aplication_tab_widget.addTab(self.instruction_tab, "Instruction")
+
         spacerItem15 = QSpacerItem(
             20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
         self.verticalLayout.addItem(spacerItem15)
@@ -2259,7 +2261,7 @@ class MainWindow(QMainWindow):
         self.aplication_tab_widget.setCurrentIndex(0)
         QMetaObject.connectSlotsByName(main_window)
         action_names = self.cont.get_gesture_recognition(
-        ).get_mapping().function_getter.get_all_functions_names()
+        ).get_mapping().function_getter.get_all_functions_names_for_interface()
         for i in action_names:
             self.action1_comboBox.addItem(i)
             self.action2_comboBox.addItem(i)
@@ -2354,6 +2356,7 @@ class MainWindow(QMainWindow):
             lambda: self.set_config())
         self.aplication_tab_widget.currentChanged.connect(
             lambda: self.scroll_up())
+        
         self.Worker1 = Worker1(self.cont, self, self.absolute_path)
         self.Worker1.start()
         self.Worker1.ImageUpdate.connect(self.ImageUpdateSlot)

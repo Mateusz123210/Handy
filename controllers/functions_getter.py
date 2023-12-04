@@ -42,7 +42,12 @@ class FunctionsGetter():
 
     def get_all_functions_names(self):
         return self.dct.keys()
-
+    
+    def get_all_functions_names_for_interface(self):
+        functions_list = list(self.dct.keys())
+        del functions_list[10]
+        return functions_list
+    
     def get_absolute_path(self):
         return self.absolute_path
 
